@@ -1,9 +1,19 @@
 <!DOCTYPE html>
 <html lang="id">
 
-<head>
+<head> <script>
+window.MathJax = {
+  tex: {
+    inlineMath: [['$', '$'], ['\\(', '\\)']],
+    displayMath: [['$$', '$$'], ['\\[', '\\]']]
+  }
+};
+</script>
+
+<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
 
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <title>Asuransi Seumur Hidup</title>
 
@@ -31,6 +41,11 @@
             border-radius:20px 20px 0 0;
         }
 
+        .hasil{
+            border-radius:15px;
+            text-align:center;
+        }
+
     </style>
 
 </head>
@@ -47,28 +62,110 @@
                 💚 Asuransi Seumur Hidup
             </h2>
 
+            <p>
+                Premi Tunggal Bersih (Net Single Premium)
+            </p>
+
         </div>
 
-        <div class="card-body">
+        <div class="card-body p-4">
+            <div class="card border-0 shadow-sm mb-4">
 
+    <div class="card-header text-white"
+         style="background:linear-gradient(135deg,#198754,#56ab91);">
+
+        <h5 class="mb-0">
+            📚 Materi Asuransi Jiwa Seumur Hidup
+        </h5>
+
+    </div>
+
+    <div class="card-body">
+
+        <div class="row">
+
+            <div class="col-md-7">
+
+                <h6 class="fw-bold text-success">
+                    Definisi
+                </h6>
+
+                <p class="text-muted">
+                    Asuransi Jiwa Seumur Hidup (Whole Life Insurance)
+                    memberikan manfaat kapan pun tertanggung
+                    meninggal dunia selama masa hidupnya.
+                </p>
+
+            </div>
+
+            <div class="col-md-5">
+
+                <div class="bg-light rounded p-3 border">
+
+                    <h6 class="fw-bold mb-2">
+                        📌 Notasi
+                    </h6>
+
+                    <ul class="small mb-0">
+                        <li>x = usia tertanggung</li>
+                        <li>v = 1/(1+i)</li>
+                        <li>lx = jumlah hidup usia x</li>
+                        <li>dx = jumlah kematian usia x</li>
+                    </ul>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <hr>
+
+        <h6 class="fw-bold text-success">
+            Rumus
+        </h6>
+
+        <div class="bg-white border rounded-4 p-4 text-center shadow-sm">
+
+    <h4 class="mb-0">
+        $$A_x = \sum_{k=0}^{\infty} v^{k+1}\,\frac{d_{x+k}}{l_x}$$
+    </h4>
+
+        </div>
+
+        <div class="alert alert-light border mt-3 mb-0">
+
+            <strong>Premi Tunggal Bersih</strong>
+
+            <br>
+
+            Premi = Manfaat × A<sub>x</sub>
+
+        </div>
+
+    </div>
+
+</div>
             <form method="POST">
 
                 <div class="mb-3">
 
-                    <label>
-                        Usia 
+                    <label class="form-label">
+                        Usia
                     </label>
 
                     <input type="number"
                            name="usia"
                            class="form-control"
+                           min="0"
+                           max="120"
                            required>
 
                 </div>
 
                 <div class="mb-3">
 
-                    <label>
+                    <label class="form-label">
                         Suku Bunga (%)
                     </label>
 
@@ -82,8 +179,8 @@
 
                 <div class="mb-3">
 
-                    <label>
-                        Uang Pertanggungan (Rp)
+                    <label class="form-label">
+                        Manfaat (Rp)
                     </label>
 
                     <input type="number"
@@ -93,7 +190,8 @@
 
                 </div>
 
-                <button class="btn btn-success w-100">
+                <button type="submit"
+                        class="btn btn-success w-100">
 
                     Hitung Premi
 
@@ -101,12 +199,12 @@
 
             </form>
 
-            {% if hasil %}
+            {% if hasil is not none %}
 
-            <div class="alert alert-success mt-4 text-center">
+            <div class="alert alert-success mt-4 hasil">
 
                 <h5>
-                    Premi Tunggal Bersih
+                    Premi Bersih Tunggal Asuransi Seumur Hidup
                 </h5>
 
                 <h2>
@@ -122,7 +220,7 @@
                 <a href="/"
                    class="btn btn-outline-dark">
 
-                    ← Kembali
+                    ← Kembali ke Dashboard
 
                 </a>
 
